@@ -34,7 +34,7 @@ export default function ClientCardPage({ clients = [] }) {
           ) : (
             <p>No orders yet</p>
           )} */}
-          <button className="" onClick={() => navigate("/orders")}>
+          <button className="add-btn " onClick={() => navigate("/orders")}>
             Add new order
           </button>
         </div>

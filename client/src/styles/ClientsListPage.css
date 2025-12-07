@@ -51,13 +51,15 @@
     color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.4s;
     margin-right: 8px;
 }
 
+
 .open-btn:hover {
     background: #333333;
-
+    color: #1c1c1c;
+    color: #ffffff;
 }
 
 .delete-btn {
