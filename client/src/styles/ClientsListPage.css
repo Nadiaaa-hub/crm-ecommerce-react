@@ -12,9 +12,7 @@
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
-    border-spacing: 0;
     margin-top: 20px;
-
 }
 
 .clients-table thead tr th {
@@ -30,10 +28,15 @@
     cursor: pointer;
     padding: 10px 15px;
     border: none;
-    background: #e6dec9;
+    background: #f7f5ef;
     color: #1c1c1c;
     border-radius: 8px;
     transition: 0.2s;
+}
+
+.client-row:hover {
+    background: #e6dec9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .client-row td {
@@ -41,27 +44,24 @@
     border-bottom: 1px solid #ddd;
 }
 
-.client-row:hover {
-    opacity: 0.8;
-}
-
 .open-btn {
-    padding: 8px 14px;
+    padding: 8px 15px;
     border: none;
-    background: #e6dec9;
-    color: #1c1c1c;
+    background: #1c1c1c;
+    color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background 0.2s;
     margin-right: 8px;
 }
 
 .open-btn:hover {
-    opacity: 0.8;
+    background: #333333;
+
 }
 
 .delete-btn {
-    padding: 8px 14px;
+    padding: 8px 15px;
     background-color: #a00000;
     color: #ffffff;
     border: none;
@@ -83,12 +83,12 @@
     cursor: pointer;
     border-radius: 8px;
     font-weight: 500;
-    transition: background 0.2s;
-
+    transition: background 0.4s;
 }
 
 .add-client-btn:hover {
-    background: #D9C8A7;
+    background: #d9c8a7;
+    color: #1c1c1c;
 }
 
 .controls-bar {
@@ -111,5 +111,5 @@
 }
 
 .search-input:focus {
-    border-color: #D9C8A7;
+    border-color: #d9c8a7;
 }

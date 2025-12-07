@@ -17,11 +17,14 @@ export default function ClientsListPage({ clients = [], deleteClient }) {
       <h1 className="clients-title">Clients</h1>
 
       <div className="controls-bar">
-        <button className="client-row" onClick={() => navigate("/add-clients")}>
+        <button
+          className="add-client-btn"
+          onClick={() => navigate("/add-clients")}>
           Add Client
         </button>
+
         <input
-          className="search-input "
+          className="search-input"
           type="text"
           placeholder="Search by name"
           value={search}
@@ -47,19 +50,19 @@ export default function ClientsListPage({ clients = [], deleteClient }) {
 
           <tbody>
             {filterClients.map((client) => (
-              <tr key={client.id}>
+              <tr className="client-row" key={client.id}>
                 <td>{client.id}</td>
                 <td>{client.name}</td>
                 <td>{client.phone}</td>
                 <td>{client.email}</td>
                 <td>
                   <button
-                    className="open-btn "
+                    className="open-btn"
                     onClick={() => navigate(`/clients/${client.id}`)}>
                     Open
                   </button>
                   <button
-                    className="delete-btn "
+                    className="delete-btn"
                     onClick={() => deleteClient(client.id)}>
                     Delete
                   </button>
