@@ -20,7 +20,7 @@ export default function ClientCardPage({ clients = [] }) {
         <div className="client-card">
           <h2>{client.name}</h2> <p>ID: {client.id}</p>
           <p>Phone: {client.phone}</p> <p>Email: {client.email}</p>
-          <p>Registered: {client.registrationDate}</p>
+          {/* <p>Registered: {client.registrationDate}</p>
           <h3>Order History ({client.orders.length})</h3>
           {client.orders.length > 0 ? (
             <ul>
@@ -33,7 +33,10 @@ export default function ClientCardPage({ clients = [] }) {
             </ul>
           ) : (
             <p>No orders yet</p>
-          )}
+          )} */}
+          <button className="" onClick={() => navigate("/orders")}>
+            Add new order
+          </button>
         </div>
       )}
     </div>
