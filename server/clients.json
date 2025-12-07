@@ -1,0 +1,141 @@
+[
+  {
+    "0": {
+      "id": 1,
+      "name": "Олена",
+      "phone": "+380991234567",
+      "email": "olena@gmail.com",
+      "registrationDate": "2024-01-20",
+      "orders": [
+        {
+          "id": 1,
+          "product": "Сукня Black Swan",
+          "date": "2024-02-10",
+          "sum": 1800,
+          "status": "Виконано"
+        }
+      ]
+    },
+    "1": {
+      "id": 2,
+      "name": "Марія",
+      "phone": "+380631112233",
+      "email": "maria.store@gmail.com",
+      "registrationDate": "2024-01-12",
+      "orders": []
+    },
+    "2": {
+      "id": 3,
+      "name": "Вікторія",
+      "phone": "+380673330099",
+      "email": "vika.vik@gmail.com",
+      "registrationDate": "2024-02-05",
+      "orders": [
+        {
+          "id": 2,
+          "product": "Топ Luna",
+          "date": "2024-03-01",
+          "sum": 950,
+          "status": "Виконано"
+        },
+        {
+          "id": 3,
+          "product": "Штани Breeze",
+          "date": "2024-04-12",
+          "sum": 1200,
+          "status": "В очікуванні"
+        }
+      ]
+    },
+    "3": {
+      "id": 4,
+      "name": "Анна",
+      "phone": "+380503212100",
+      "email": "anna_bloom@gmail.com",
+      "registrationDate": "2024-01-28",
+      "orders": []
+    },
+    "4": {
+      "id": 5,
+      "name": "Катерина",
+      "phone": "+380991234000",
+      "email": "kate.style@gmail.com",
+      "registrationDate": "2024-03-10",
+      "orders": [
+        {
+          "id": 4,
+          "product": "Худі Storm",
+          "date": "2024-03-15",
+          "sum": 1450,
+          "status": "Виконано"
+        }
+      ]
+    },
+    "5": {
+      "id": 6,
+      "name": "Наталія",
+      "phone": "+380681112244",
+      "email": "natasha.sweet@gmail.com",
+      "registrationDate": "2024-01-02",
+      "orders": [
+        {
+          "id": 5,
+          "product": "Куртка Nova",
+          "date": "2024-02-20",
+          "sum": 3200,
+          "status": "Скасовано"
+        }
+      ]
+    },
+    "6": {
+      "id": 7,
+      "name": "Оксана",
+      "phone": "+380734455667",
+      "email": "oksana.home@gmail.com",
+      "registrationDate": "2024-01-17",
+      "orders": []
+    },
+    "7": {
+      "id": 8,
+      "name": "Дарина",
+      "phone": "+380931230045",
+      "email": "daria_rose@gmail.com",
+      "registrationDate": "2024-04-01",
+      "orders": [
+        {
+          "id": 6,
+          "product": "Светр Cozy",
+          "date": "2024-04-10",
+          "sum": 1100,
+          "status": "Виконано"
+        }
+      ]
+    },
+    "8": {
+      "id": 9,
+      "name": "Аліна",
+      "phone": "+380990020088",
+      "email": "alina.shine@gmail.com",
+      "registrationDate": "2024-03-20",
+      "orders": []
+    },
+    "9": {
+      "id": 10,
+      "name": "Софія",
+      "phone": "+380971112000",
+      "email": "sofia.light@gmail.com",
+      "registrationDate": "2024-02-22",
+      "orders": [
+        {
+          "id": 7,
+          "product": "Комплект Soft Beige",
+          "date": "2024-02-27",
+          "sum": 2100,
+          "status": "Виконано"
+        }
+      ]
+    },
+    "id": 1,
+    "orders": []
+  }
+]
