@@ -17,7 +17,7 @@ export default function ClientsListPage({ clients = [], deleteClient }) {
       <h1 className="clients-title">Clients</h1>
 
       <div className="controls-bar">
-        <button className="open-btn" onClick={() => navigate("/add-clients")}>
+        <button className="client-row" onClick={() => navigate("/add-clients")}>
           Add Client
         </button>
         <input

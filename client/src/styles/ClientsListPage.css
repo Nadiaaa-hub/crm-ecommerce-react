@@ -27,10 +27,13 @@
 }
 
 .client-row {
-    background: #ffffff;
     cursor: pointer;
+    padding: 10px 15px;
+    border: none;
+    background: #e6dec9;
+    color: #1c1c1c;
+    border-radius: 8px;
     transition: 0.2s;
-    border-radius: 10px;
 }
 
 .client-row td {
@@ -39,7 +42,7 @@
 }
 
 .client-row:hover {
-    background: #f0f0e0;
+    opacity: 0.8;
 }
 
 .open-btn {
@@ -97,11 +100,16 @@
 }
 
 .search-input {
+    outline: none;
     width: 250px;
     padding: 10px 15px;
     font-size: 16px;
     color: #1c1c1c;
-    border: 1px solid #e6dec9;
+    border: 2px solid #e6dec9;
     border-radius: 8px;
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+    border-color: #D9C8A7;
 }
