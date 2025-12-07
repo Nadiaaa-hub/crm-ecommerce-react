@@ -137,5 +137,25 @@
     },
     "id": 1,
     "orders": []
+  },
+  {
+    "0": {
+      "id": 1,
+      "name": "Олена",
+      "phone": "+380991234567",
+      "email": "olena@gmail.com",
+      "registrationDate": "2024-01-20",
+      "orders": [
+        {
+          "id": 1,
+          "product": "Сукня Black Swan",
+          "date": "2024-02-10",
+          "sum": 1800,
+          "status": "Виконано"
+        }
+      ]
+    },
+    "id": 2,
+    "orders": []
   }
 ]

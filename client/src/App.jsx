@@ -37,8 +37,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route element={<Navigate to="/dashboard" />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Navigate to="/dashboard" />} />
           <Route
             path="dashboard"
             element={<PlaceholderPage title="Dashboard" />}
