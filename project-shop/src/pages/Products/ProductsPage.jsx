@@ -1,22 +1,59 @@
-// src/pages/Products/ProductsPage.jsx
-
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { products } from "../../data/products.js";
-import '../../styles/ProductsPage.css'
+import { useProducts } from "../../context/ProductsContext.jsx";
+import AddProductModal from "../../components/AddProductModal.jsx";
+import "../../styles/ProductsPage.css";
 
 export default function ProductsPage() {
+  const { productList, setProductList } = useProducts();
+
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  
+  const [isAddOpen, setIsAddOpen] = useState(false);
+  
+  const handleAddProduct = (data) => {
+    if (!data.name.trim() || !data.price) {
+      alert("Заповніть назву та ціну");
+      return;
+    }
+  
+    const priceNumber = Number(data.price);
+    if (Number.isNaN(priceNumber)) {
+      alert("Ціна має бути числом");
+      return;
+    }
+  
+    const newId =
+      productList.length > 0
+        ? Math.max(...productList.map((p) => p.id)) + 1
+        : 1;
+  
+    const createdProduct = {
+      id: newId,
+      category: data.category || "Аксесуари",
+      subcategory: data.subcategory || "",
+      name: data.name,
+      price: priceNumber,
+      currency: "UAH",
+      description: data.description || "",
+      imageUrl: data.imageUrl || "",
+      stock: Number(data.stock) || 1,
+    };
+  
+    setProductList((prev) => [...prev, createdProduct]);
+    setIsAddOpen(false);
+  };
+  
 
   const categories = useMemo(
-    () => Array.from(new Set(products.map((p) => p.category))),
-    []
+    () => Array.from(new Set(productList.map((p) => p.category))),
+    [productList]
   );
 
   const filteredProducts = useMemo(
     () =>
-      products.filter((product) => {
+      productList.filter((product) => {
         const byCategory =
           selectedCategory === "all" || product.category === selectedCategory;
 
@@ -26,12 +63,20 @@ export default function ProductsPage() {
 
         return byCategory && bySearch;
       }),
-    [selectedCategory, searchQuery]
+    [productList, selectedCategory, searchQuery]
   );
 
   return (
     <div className="products-page">
-      <h1 className="products-page__title">Каталог товарів</h1>
+      <div className="products-page__header">
+        <h1 className="products-page__title">Каталог товарів</h1>
+        <button
+          className="products-add-btn"
+          onClick={() => setIsAddOpen(true)}
+        >
+          + Додати товар
+        </button>
+      </div>
 
       <div className="products-filters">
         <div className="products-filters__item">
@@ -66,9 +111,10 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Список товарів */}
       {filteredProducts.length === 0 ? (
-        <p className="products-empty">За заданими фільтрами нічого не знайдено 😢</p>
+        <p className="products-empty">
+          За заданими фільтрами нічого не знайдено 😢
+        </p>
       ) : (
         <div className="products-grid">
           {filteredProducts.map((product) => (
@@ -116,6 +162,11 @@ export default function ProductsPage() {
           ))}
         </div>
       )}
+      <AddProductModal
+        isOpen={isAddOpen}
+        onClose={() => setIsAddOpen(false)}
+        onSubmit={handleAddProduct}
+      />
     </div>
   );
 }

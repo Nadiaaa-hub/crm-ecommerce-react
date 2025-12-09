@@ -1,8 +1,7 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import ProductsPage from ".././pages/Products/ProductsPage";
-import ProductDetailsPage from ".././pages/Products/ProductDetailsPage";
+import ProductsPage from "../pages/Products/ProductsPage.jsx";
+import ProductDetailsPage from "../pages/Products/ProductDetailsPage.jsx";
 
 export default function AppRouter() {
   return (
@@ -16,3 +15,4 @@ export default function AppRouter() {
     </BrowserRouter>
   );
 }
+
