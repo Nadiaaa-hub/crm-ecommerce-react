@@ -1,4 +1,4 @@
-import "../styles/PlaceholderPage.css";
+import "../../styles/PlaceholderPage.css";
 
 export default function PlaceholderPage({ title }) {
   return (

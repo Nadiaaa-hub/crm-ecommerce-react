@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./components/Layout";
-import ClientsListPage from "./components/ClientsListPage";
-import AddClientForm from "./components/AddClientForm";
-import ClientCardPage from "./components/ClientCardPage";
-import PlaceholderPage from "./components/PlaceholderPage";
+import Layout from "../components/Layout.jsx";
+import ClientsListPage from "../pages/Clients/ClientsListPage";
+import AddClientForm from "../components/AddClientForm";
+import ClientCardPage from "../pages/Clients/ClientCardPage";
+import PlaceholderPage from "../pages/Clients/PlaceholderPage";
 
 import ProductsPage from "../pages/Products/ProductsPage.jsx";
 import ProductDetailsPage from "../pages/Products/ProductDetailsPage.jsx";
@@ -19,26 +19,17 @@ function AppRoutes({ clients, handleAddClient, deleteClient }) {
         />
         <Route path="catalog" element={<ProductsPage />} />
         <Route path="catalog/:id" element={<ProductDetailsPage />} />
-        <Route
-          path="orders"
-          element={<PlaceholderPage title="Orders" />}
-        />
+        <Route path="orders" element={<PlaceholderPage title="Orders" />} />
         <Route
           path="clients"
           element={
-            <ClientsListPage
-              clients={clients}
-              deleteClient={deleteClient}
-            />
+            <ClientsListPage clients={clients} deleteClient={deleteClient} />
           }
         />
         <Route
           path="add-clients"
           element={
-            <AddClientForm
-              clients={clients}
-              onAddClient={handleAddClient}
-            />
+            <AddClientForm clients={clients} onAddClient={handleAddClient} />
           }
         />
         <Route
@@ -52,5 +43,3 @@ function AppRoutes({ clients, handleAddClient, deleteClient }) {
 }
 
 export default AppRoutes;
-
-

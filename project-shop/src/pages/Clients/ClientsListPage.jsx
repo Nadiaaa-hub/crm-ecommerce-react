@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/ClientsListPage.css";
+import "../../styles/ClientsListPage.css";
 
 export default function ClientsListPage({ clients = [], deleteClient }) {
   const [search, setSearch] = useState("");

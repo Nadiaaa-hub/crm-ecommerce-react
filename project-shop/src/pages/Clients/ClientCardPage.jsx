@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import "../styles/ClientCardPage.css";
+import "../../styles/ClientCardPage.css";
 
 export default function ClientCardPage({ clients = [] }) {
   const { id } = useParams();
