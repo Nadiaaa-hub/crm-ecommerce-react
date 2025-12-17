@@ -27,11 +27,10 @@ function AppRoutes({ clients, handleAddClient, deleteClient }) {
           }
         />
         <Route
-          path="add-clients"
-          element={
-            <AddClientForm clients={clients} onAddClient={handleAddClient} />
-          }
+          path="/add-client"
+          element={<AddClientForm onAddClient={handleAddClient} />}
         />
+
         <Route
           path="clients/:id"
           element={<ClientCardPage clients={clients} />}
