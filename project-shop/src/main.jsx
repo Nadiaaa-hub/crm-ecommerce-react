@@ -1,13 +1,16 @@
 import ReactDOM from "react-dom/client";
 import "./styles/index.css";
-import AppRouter from "./router/AppRouter.jsx";
+import App from "./App.jsx";
 import { ProductsProvider } from "./context/ProductsContext.jsx";
+import { ClientsProvider } from "./context/ClientsContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ProductsProvider>
-    <BrowserRouter>
-      <AppRouter />
-    </BrowserRouter>
+    <ClientsProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ClientsProvider>
   </ProductsProvider>
 );

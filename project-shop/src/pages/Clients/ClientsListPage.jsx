@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useClients } from "../../context/ClientsContext";
 import "../../styles/ClientsListPage.css";
 
-export default function ClientsListPage({ clients = [], deleteClient }) {
+export default function ClientsListPage() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+
+  const { clients, deleteClient } = useClients();
 
   const filterClients = clients.filter(
     (client) =>
       client.name &&
-      client.name.toLowerCase().includes(search.trim().toLowerCase())
+      client.name.toLowerCase().includes(search.toLowerCase().trim())
   );
 
   return (
@@ -19,7 +22,7 @@ export default function ClientsListPage({ clients = [], deleteClient }) {
       <div className="controls-bar">
         <button
           className="add-client-btn"
-          onClick={() => navigate("/add-clients")}>
+          onClick={() => navigate("/add-client")}>
           Add Client
         </button>
 

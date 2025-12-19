@@ -1,14 +1,51 @@
+// import { Routes, Route, Navigate } from "react-router-dom";
+// import Layout from "../components/Layout";
+// import ClientsListPage from "../pages/Clients/ClientsListPage";
+// import AddClientForm from "../components/AddClientForm";
+// import ClientCardPage from "../pages/Clients/ClientCardPage";
+// import PlaceholderPage from "../pages/Clients/PlaceholderPage";
+
+// export default function AppRouter({ clients, handleAddClient, deleteClient }) {
+//   return (
+//     <Routes>
+//       <Route element={<Layout />}>
+//         <Route path="/" element={<Navigate to="/dashboard" />} />
+//         <Route
+//           path="dashboard"
+//           element={<PlaceholderPage title="Dashboard" />}
+//         />
+//         <Route
+//           path="clients"
+//           element={
+//             <ClientsListPage clients={clients} deleteClient={deleteClient} />
+//           }
+//         />
+//         <Route
+//           path="clients/:id"
+//           element={<ClientCardPage clients={clients} />}
+//         />
+//         <Route
+//           path="add-client"
+//           element={<AddClientForm onAddClient={handleAddClient} />}
+//         />
+
+//         <Route path="orders" element={<PlaceholderPage title="Orders" />} />
+
+//         <Route path="*" element={<Navigate to="/dashboard" />} />
+//       </Route>
+//     </Routes>
+//   );
+// }
 import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "../components/Layout.jsx";
+import Layout from "../components/Layout";
 import ClientsListPage from "../pages/Clients/ClientsListPage";
 import AddClientForm from "../components/AddClientForm";
 import ClientCardPage from "../pages/Clients/ClientCardPage";
 import PlaceholderPage from "../pages/Clients/PlaceholderPage";
+import ProductsPage from "../pages/Products/ProductsPage";
+import ProductDetailsPage from "../pages/Products/ProductDetailsPage";
 
-import ProductsPage from "../pages/Products/ProductsPage.jsx";
-import ProductDetailsPage from "../pages/Products/ProductDetailsPage.jsx";
-
-function AppRoutes({ clients, handleAddClient, deleteClient }) {
+export default function AppRouter() {
   return (
     <Routes>
       <Route element={<Layout />}>
@@ -17,28 +54,16 @@ function AppRoutes({ clients, handleAddClient, deleteClient }) {
           path="dashboard"
           element={<PlaceholderPage title="Dashboard" />}
         />
-        <Route path="catalog" element={<ProductsPage />} />
-        <Route path="catalog/:id" element={<ProductDetailsPage />} />
+        <Route path="clients" element={<ClientsListPage />} />
+        <Route path="clients/:id" element={<ClientCardPage />} />
+        <Route path="add-client" element={<AddClientForm />} />
         <Route path="orders" element={<PlaceholderPage title="Orders" />} />
-        <Route
-          path="clients"
-          element={
-            <ClientsListPage clients={clients} deleteClient={deleteClient} />
-          }
-        />
-        <Route
-          path="/add-client"
-          element={<AddClientForm onAddClient={handleAddClient} />}
-        />
 
-        <Route
-          path="clients/:id"
-          element={<ClientCardPage clients={clients} />}
-        />
+        <Route path="products" element={<ProductsPage />} />
+        <Route path="products/:id" element={<ProductDetailsPage />} />
+
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Route>
     </Routes>
   );
 }
-
-export default AppRoutes;

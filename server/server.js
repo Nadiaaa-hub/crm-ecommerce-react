@@ -104,7 +104,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_PATH = path.join(__dirname, "clients.json");
 
-// Функції для читання і запису
 function readClients() {
   try {
     if (!fs.existsSync(DATA_PATH)) return [];
@@ -120,13 +119,11 @@ function writeClients(clients) {
   fs.writeFileSync(DATA_PATH, JSON.stringify(clients, null, 2), "utf-8");
 }
 
-// GET всі клієнти
 app.get("/clients", (req, res) => {
   const clients = readClients();
   res.json(clients);
 });
 
-// POST додати клієнта
 app.post("/clients", (req, res) => {
   const newClient = req.body;
   if (!newClient || typeof newClient !== "object") {
@@ -147,7 +144,6 @@ app.post("/clients", (req, res) => {
   res.status(201).json(savedClient);
 });
 
-// DELETE клієнта по id
 app.delete("/clients/:id", (req, res) => {
   const id = Number(req.params.id);
   let clients = readClients();

@@ -3,7 +3,7 @@ import "../styles/Sidebar.css";
 
 const menu = [
   { path: "/dashboard", name: "Dashboard" },
-  { path: "/catalog", name: "Catalog" },
+  { path: "/products", name: "Catalog" },
   { path: "/clients", name: "Clients" },
   { path: "/orders", name: "Orders" },
 ];

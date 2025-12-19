@@ -1,12 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useClients } from "../../context/ClientsContext";
 import "../../styles/ClientCardPage.css";
 
-export default function ClientCardPage({ clients = [] }) {
+export default function ClientCardPage() {
   const { id } = useParams();
-
+  const { clients } = useClients();
   const navigate = useNavigate();
 
-  const client = clients.find((c) => c.id == id);
+  const client = clients.find((c) => String(c.id) === id);
 
   return (
     <div className="container">
@@ -15,7 +16,7 @@ export default function ClientCardPage({ clients = [] }) {
       </button>
 
       {!client ? (
-        <p>Client with id {client} not found</p>
+        <p>Client with id {client.id} not found</p>
       ) : (
         <div className="client-card">
           <h2>{client.name}</h2> <p>ID: {client.id}</p>
@@ -34,7 +35,10 @@ export default function ClientCardPage({ clients = [] }) {
           ) : (
             <p>No orders yet</p>
           )} */}
-          <button className="add-btn " onClick={() => navigate("/orders")}>
+          <button
+            type="button"
+            className="add-btn"
+            onClick={() => navigate("/orders")}>
             Add new order
           </button>
         </div>
