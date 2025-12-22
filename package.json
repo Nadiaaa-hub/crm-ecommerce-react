@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "express": "^4.22.1",
-    "react-router-dom": "^7.10.1"
-  }
-}
