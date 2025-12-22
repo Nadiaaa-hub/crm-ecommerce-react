@@ -1,0 +1,79 @@
+.recentClients {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    color: black;
+  }
+  
+  .recentClients__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .recentClients__title {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  
+  .recentClients__subtitle {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+  
+  .recentClients__empty {
+    padding: 18px 6px;
+    opacity: 0.65;
+    border: 1px dashed rgba(0,0,0,0.18);
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .recentClients__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .clientRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 12px;
+    border-radius: 12px;
+    background: #f6f1e6;
+  }
+  
+  .clientRow__name {
+    font-weight: 800;
+  }
+  
+  .clientRow__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+  
+  .clientRow__dot {
+    opacity: 0.6;
+  }
+  
+  .clientRow__right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .clientRow__badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #111827;
+    color: #ffffff;
+  }
+  
