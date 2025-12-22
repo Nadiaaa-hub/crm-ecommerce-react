@@ -1,13 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Олександр",
-    "phone": "+380671234567",
-    "email": "oleksandr@mail.com",
-    "registrationDate": "2025-12-19",
-    "orders": []
-  },
-  {
     "id": 2,
     "name": "Марія",
     "phone": "+380631112233",

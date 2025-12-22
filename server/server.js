@@ -103,6 +103,22 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_PATH = path.join(__dirname, "clients.json");
+const ORDERS_PATH = path.join(__dirname, "orders.json");
+
+function readOrders() {
+  try {
+    if (!fs.existsSync(ORDERS_PATH)) return [];
+    const raw = fs.readFileSync(ORDERS_PATH, "utf-8").trim();
+    return raw ? JSON.parse(raw) : [];
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+}
+
+function writeOrders(orders) {
+  fs.writeFileSync(ORDERS_PATH, JSON.stringify(orders, null, 2), "utf-8");
+}
 
 function readClients() {
   try {
@@ -151,6 +167,41 @@ app.delete("/clients/:id", (req, res) => {
   writeClients(clients);
   res.json({ message: "Client deleted" });
 });
+
+// app.get("/orders", (req, res) => {
+//   const orders = readOrders();
+//   res.json(orders);
+// });
+
+// app.post("/orders", (req, res) => {
+//   const newOrder = req.body;
+//   if (!newOrder || typeof newOrder !== "object") {
+//     return res.status(400).json({ error: "Order object expected" });
+//   }
+
+//   const orders = readOrders();
+//   const maxId = orders.length ? Math.max(...orders.map((o) => o.id || 0)) : 0;
+
+//   const savedOrder = {
+//     ...newOrder,
+//     id: maxId + 1,
+//     createdAt: newOrder.createdAt || new Date().toISOString(),
+//   };
+
+//   orders.push(savedOrder);
+//   writeOrders(orders);
+
+//   res.status(201).json(savedOrder);
+// });
+
+// app.delete("/orders/:id", (req, res) => {
+//   const id = Number(req.params.id);
+//   let orders = readOrders();
+//   orders = orders.filter((o) => o.id !== id);
+//   writeOrders(orders);
+//   res.json({ message: "Order deleted" });
+// });
+
 
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)

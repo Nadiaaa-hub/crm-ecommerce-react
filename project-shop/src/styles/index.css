@@ -11,6 +11,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --app-bg: #f9f9f9;         
+  --surface-bg: #e6dec9; 
 }
 
 a {
@@ -25,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--app-bg);
 }
 
 h1 {
@@ -63,3 +67,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+

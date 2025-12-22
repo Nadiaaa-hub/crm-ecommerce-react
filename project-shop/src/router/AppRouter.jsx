@@ -44,16 +44,14 @@ import ClientCardPage from "../pages/Clients/ClientCardPage";
 import PlaceholderPage from "../pages/Clients/PlaceholderPage";
 import ProductsPage from "../pages/Products/ProductsPage";
 import ProductDetailsPage from "../pages/Products/ProductDetailsPage";
+import Dashboard from "../pages/Dashboard/Dashboard.jsx";
 
 export default function AppRouter() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route
-          path="dashboard"
-          element={<PlaceholderPage title="Dashboard" />}
-        />
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="clients" element={<ClientsListPage />} />
         <Route path="clients/:id" element={<ClientCardPage />} />
         <Route path="add-client" element={<AddClientForm />} />
