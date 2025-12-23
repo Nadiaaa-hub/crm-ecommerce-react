@@ -93,6 +93,8 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { orders } from "./dataOrders/dataOrders.js";
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 const PORT = 5051;
@@ -167,6 +169,29 @@ app.delete("/clients/:id", (req, res) => {
   writeClients(clients);
   res.json({ message: "Client deleted" });
 });
+
+////orders
+
+app.get('/orders', (req, response) => {
+   return response.json(orders);
+});
+
+app.post('/orders' , (req, response) => {
+  const newOrder = {
+    id: uuidv4(),
+    date: new Date().toISOString(),
+    client: req.body.client,
+    items: req.body.items.map(item => ({
+      id: uuidv4(), 
+      ...item
+    })),
+    total: req.body.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  }
+
+  orders.push(newOrder);
+  response.status(200).json(newOrder); 
+});
+  
 
 // app.get("/orders", (req, res) => {
 //   const orders = readOrders();

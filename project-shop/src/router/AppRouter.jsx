@@ -45,6 +45,9 @@ import PlaceholderPage from "../pages/Clients/PlaceholderPage";
 import ProductsPage from "../pages/Products/ProductsPage";
 import ProductDetailsPage from "../pages/Products/ProductDetailsPage";
 import Dashboard from "../pages/Dashboard/Dashboard.jsx";
+import NewOrderForm from "../components/NewOrderForm/NewOrderForm.jsx";
+import OrdersPage from "../pages/Orders/OrdersPage.jsx";
+import FullOrderCard from "../components/FullOrderCard/FullOrderCard.jsx";
 
 export default function AppRouter() {
   return (
@@ -55,7 +58,9 @@ export default function AppRouter() {
         <Route path="clients" element={<ClientsListPage />} />
         <Route path="clients/:id" element={<ClientCardPage />} />
         <Route path="add-client" element={<AddClientForm />} />
-        <Route path="orders" element={<PlaceholderPage title="Orders" />} />
+        <Route path="orders" element={<OrdersPage />} />
+        <Route path="newOrder" element={<NewOrderForm/>} />
+        <Route path="orders/:orderId" element={<FullOrderCard />} />
 
         <Route path="products" element={<ProductsPage />} />
         <Route path="products/:id" element={<ProductDetailsPage />} />
