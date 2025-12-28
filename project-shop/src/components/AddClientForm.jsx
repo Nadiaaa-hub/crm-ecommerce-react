@@ -1,66 +1,3 @@
-// import { useState } from "react";
-// import { useFormik } from "formik";
-// import { useNavigate } from "react-router-dom";
-// import "../styles/AddClientForm.css";
-// import { useClients } from "../context/ClientsContext";
-
-// export default function AddClientForm() {
-//   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
-//   const navigate = useNavigate();
-//   const { addClient } = useClients();
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const formatDate = (date) => {
-//     const months = [
-//       "Jan",
-//       "Feb",
-//       "Mar",
-//       "Apr",
-//       "May",
-//       "Jun",
-//       "Jul",
-//       "Aug",
-//       "Sep",
-//       "Oct",
-//       "Nov",
-//       "Dec",
-//     ];
-//     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     addClient({ ...formData, registrationDate: formatDate(new Date()) });
-//     setFormData({ name: "", email: "", phone: "" });
-//     navigate("/clients");
-//   };
-
-//   return (
-//     <div className="container">
-//       <form className="form-container" onSubmit={handleSubmit}>
-//         <h3>Add New Client</h3>
-//         {["name", "email", "phone"].map((field) => (
-//           <input
-//             key={field}
-//             className="form-input"
-//             name={field}
-//             placeholder={`Enter ${field}`}
-//             value={formData[field]}
-//             onChange={handleChange}
-//           />
-//         ))}
-//         <button className="form-btn" type="submit">
-//           Add Client
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -153,7 +90,7 @@ export default function AddClientForm() {
         {({ values, handleChange, isSubmitting }) => (
           <Form className="form-container">
             <div className="form-field">
-              <Field
+              <Field //замість інпуту
                 type="text"
                 name="name"
                 placeholder="Enter name"
