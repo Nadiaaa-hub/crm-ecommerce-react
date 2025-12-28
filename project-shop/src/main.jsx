@@ -1,16 +1,46 @@
-import ReactDOM from "react-dom/client";
-import "./styles/index.css";
+// import ReactDOM from "react-dom/client";
+// import "./styles/index.css";
+// import App from "./App.jsx";
+// import { ProductsProvider } from "./context/ProductsContext.jsx";
+// import { ClientsProvider } from "./context/ClientsContext.jsx";
+// import { AuthProvider} from "./context/AuthProvider.jsx";
+// import { BrowserRouter } from "react-router-dom";
+
+// ReactDOM.createRoot(document.getElementById("root")).render(
+//   <ProductsProvider>
+//     <ClientsProvider>
+//  <AuthProvider>
+//       <BrowserRouter>
+         
+//         <App />
+       
+//       </BrowserRouter>
+//   </AuthProvider>
+//     </ClientsProvider>
+//   </ProductsProvider>
+// );
+
+
+// src/main.jsx
+import React from "react";
 import App from "./App.jsx";
+import ReactDOM from "react-dom/client";
 import { ProductsProvider } from "./context/ProductsContext.jsx";
 import { ClientsProvider } from "./context/ClientsContext.jsx";
 import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./router/AppRouter";
+import { AuthProvider } from "./context/AuthProvider";
+import "./styles/index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ProductsProvider>
+   <ProductsProvider>
     <ClientsProvider>
-      <BrowserRouter>
+ <AuthProvider>
+    <BrowserRouter>
         <App />
-      </BrowserRouter>
-    </ClientsProvider>
+        </BrowserRouter>
+     </AuthProvider>
+       </ClientsProvider>
+
   </ProductsProvider>
 );

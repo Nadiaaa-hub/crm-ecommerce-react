@@ -80,19 +80,11 @@
     "orders": []
   },
   {
-    "id": 10,
     "name": "Nadia",
-    "phone": "+380973745316",
-    "email": "nadia2000@gmail.com",
-    "registrationDate": "2025-12-14",
-    "orders": [
-      {
-        "id": 3,
-        "product": "Пальто Winter",
-        "date": "2025-12-15",
-        "sum": 3500,
-        "status": "Виконано"
-      }
-    ]
+    "email": "nadya2000006@gmail.com",
+    "phone": "+380973745315",
+    "registrationDate": "26 Dec 2025",
+    "id": 11,
+    "orders": []
   }
 ]

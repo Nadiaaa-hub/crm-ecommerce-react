@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
 
 const menu = [
+  { path: "/profile", name: "Profile"},
   { path: "/dashboard", name: "Dashboard" },
   { path: "/products", name: "Catalog" },
   { path: "/clients", name: "Clients" },

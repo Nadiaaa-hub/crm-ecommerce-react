@@ -1,0 +1,157 @@
+/* src/styles/AuthPage.css */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f8;
+  padding: 20px;
+}
+
+.auth-card {
+  width: 420px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(15, 15, 15, 0.08);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-logo {
+  width: 200px;
+  height: 150px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.auth-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.auth-mode-switch {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.auth-mode-switch button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
+.auth-mode-switch button.active {
+  background: #111;
+  color: #fff;
+}
+
+.auth-mode-switch button.inactive {
+  background: #f2f2f2;
+  color: #111;
+}
+
+.auth-form {
+  width: 100%;
+}
+
+.auth-form label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.auth-form input {
+  width: 95%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 10px;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #28a745;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 16px 0;
+  color: #888;
+}
+
+.auth-divider div {
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.auth-divider div:nth-child(2) {
+  flex: 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+.auth-button {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.auth-button img {
+  width: 18px;
+}
+
+.auth-footer {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.auth-footer a {
+  color: #0b5fff;
+  text-decoration: none;
+}
+
+.auth-footer button {
+  border: none;
+  background: none;
+  color: #0b5fff;
+  cursor: pointer;
+}
