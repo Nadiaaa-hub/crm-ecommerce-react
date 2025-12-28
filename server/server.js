@@ -3,8 +3,12 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { orders } from "./dataOrders/dataOrders.js";
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
+app.set("etag", false);
+
 const PORT = 5051;
 
 app.use(cors());
@@ -37,8 +41,14 @@ function writeClients(clients) {
 }
 
 app.get("/clients", (req, res) => {
+  res.set("Cache-Control", "no-store");
   const clients = readClients();
   res.json(clients);
+});
+
+app.get("/orders", (req, res) => {
+  res.set("Cache-Control", "no-store"); 
+  res.json(orders);
 });
 
 app.post("/clients", (req, res) => {
@@ -69,6 +79,10 @@ app.delete("/clients/:id", (req, res) => {
   res.json({ message: "Client deleted" });
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9efa35f713f230dd9604c6cc634ddd0ae0c31b1f
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );
