@@ -30,7 +30,7 @@ export const createOrderAsync = createAsyncThunk('orders/createOrder', async (pa
             ...item,
         })),
 
-        total: payload.items.reduce((sum,item)=> sum + item.price * item.quantity),
+        total: payload.items.reduce((sum, item) => sum + item.price * item.quantity, 0),
 
     }
 
@@ -48,14 +48,21 @@ const ordersSlice = createSlice({
 
     },
     extraReducers: (builder) => {
+        // builder.addCase(getOrdersAsync.fulfilled, (state, action) => {
+        //     state.data = action.payload;
+        // });
+
+        // builder.addCase(createOrderAsync.fulfilled, (state,action) =>{
+        //     state.data.push(action.payload);
+        //     state.loaded = true;
+        // } )
         builder.addCase(getOrdersAsync.fulfilled, (state, action) => {
             state.data = action.payload;
-        });
-
-        builder.addCase(createOrderAsync.fulfilled, (state,action) =>{
-            state.data.push(action.payload);
             state.loaded = true;
-        } )
+          });
+          builder.addCase(getOrdersAsync.rejected, (state) => {
+            state.loaded = true;
+          });
     },
 });
 

@@ -49,7 +49,7 @@
 
 .products-filters__select:focus,
 .products-filters__input:focus {
-    border-color: #4f46e5;
+    border-color: #9a4f4f;
     box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
 }
 
@@ -73,7 +73,7 @@
     border: 1px solid #e5e5e5;
     padding: 16px;
     background: #ffffff;
-    color: inherit;
+    color: #000000;
     transition:
         transform 0.15s ease,
         box-shadow 0.15s ease,
@@ -83,9 +83,9 @@
 
 .product-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
-    border-color: #d0d0d0;
-    background-color: #fcfcfc;
+    border-color: #000000;
+    background: #e6dec9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .product-card__image-wrapper {
@@ -158,7 +158,7 @@
     padding: 8px 16px;
     border-radius: 999px;
     border: none;
-    background: #4f46e5;
+    background: #9a4f4f;
     color: #fff;
     font-size: 14px;
     font-weight: 500;
@@ -167,7 +167,8 @@
 }
 
 .products-add-btn:hover {
-    background: #4338ca;
+    color:#000000;
+    background: #e6dec9;
     transform: translateY(-1px);
 }
 
@@ -184,7 +185,8 @@
 }
 
 .modal {
-    background: #ffffff;
+    background: #f7f5ef;
+    color:#000000;
     border-radius: 16px;
     padding: 20px 24px;
     max-width: 480px;
@@ -217,6 +219,7 @@
 
 .modal__field input,
 .modal__field textarea {
+    background-color: #e6dec9;
     padding: 6px 10px;
     border-radius: 8px;
     border: 1px solid #d0d0d0;
@@ -227,7 +230,7 @@
 
 .modal__field input:focus,
 .modal__field textarea:focus {
-    border-color: #4f46e5;
+    border-color: #9a4f4f;
     box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
 }
 
@@ -265,10 +268,10 @@
 }
 
 .modal__btn--primary {
-    background: #4f46e5;
+    background: #9a4f4f;
     color: #ffffff;
 }
 
 .modal__btn--primary:hover {
-    background: #4338ca;
+    background: #9a4f4f;
 }

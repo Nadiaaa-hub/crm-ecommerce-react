@@ -97,6 +97,8 @@ import { orders } from "./dataOrders/dataOrders.js";
 import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
+app.set("etag", false);
+
 const PORT = 5051;
 
 app.use(cors());
@@ -105,22 +107,6 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_PATH = path.join(__dirname, "clients.json");
-// const ORDERS_PATH = path.join(__dirname, "orders.json");
-
-// function readOrders() {
-//   try {
-//     if (!fs.existsSync(ORDERS_PATH)) return [];
-//     const raw = fs.readFileSync(ORDERS_PATH, "utf-8").trim();
-//     return raw ? JSON.parse(raw) : [];
-//   } catch (err) {
-//     console.error(err);
-//     return [];
-//   }
-// }
-
-// function writeOrders(orders) {
-//   fs.writeFileSync(ORDERS_PATH, JSON.stringify(orders, null, 2), "utf-8");
-// }
 
 function readClients() {
   try {
@@ -138,8 +124,14 @@ function writeClients(clients) {
 }
 
 app.get("/clients", (req, res) => {
+  res.set("Cache-Control", "no-store");
   const clients = readClients();
   res.json(clients);
+});
+
+app.get("/orders", (req, res) => {
+  res.set("Cache-Control", "no-store"); 
+  res.json(orders);
 });
 
 app.post("/clients", (req, res) => {
@@ -169,63 +161,6 @@ app.delete("/clients/:id", (req, res) => {
   writeClients(clients);
   res.json({ message: "Client deleted" });
 });
-
-////orders
-
-app.get('/orders', (req, response) => {
-   return response.json(orders);
-});
-
-app.post('/orders' , (req, response) => {
-  const newOrder = {
-    id: uuidv4(),
-    date: new Date().toISOString(),
-    client: req.body.client,
-    items: req.body.items.map(item => ({
-      id: uuidv4(), 
-      ...item
-    })),
-    total: req.body.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
-  }
-
-  orders.push(newOrder);
-  response.status(200).json(newOrder); 
-});
-  
-
-// app.get("/orders", (req, res) => {
-//   const orders = readOrders();
-//   res.json(orders);
-// });
-
-// app.post("/orders", (req, res) => {
-//   const newOrder = req.body;
-//   if (!newOrder || typeof newOrder !== "object") {
-//     return res.status(400).json({ error: "Order object expected" });
-//   }
-
-//   const orders = readOrders();
-//   const maxId = orders.length ? Math.max(...orders.map((o) => o.id || 0)) : 0;
-
-//   const savedOrder = {
-//     ...newOrder,
-//     id: maxId + 1,
-//     createdAt: newOrder.createdAt || new Date().toISOString(),
-//   };
-
-//   orders.push(savedOrder);
-//   writeOrders(orders);
-
-//   res.status(201).json(savedOrder);
-// });
-
-// app.delete("/orders/:id", (req, res) => {
-//   const id = Number(req.params.id);
-//   let orders = readOrders();
-//   orders = orders.filter((o) => o.id !== id);
-//   writeOrders(orders);
-//   res.json({ message: "Order deleted" });
-// });
 
 
 app.listen(PORT, () =>
