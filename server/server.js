@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { orders } from "./dataOrders/dataOrders.js";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const app = express();
 app.set("etag", false);
@@ -35,7 +35,30 @@ function readClients() {
     return [];
   }
 }
+////orders
 
+app.get("/orders", (req, response) => {
+  return response.json(orders);
+});
+
+app.post("/orders", (req, response) => {
+  const newOrder = {
+    id: uuidv4(),
+    date: new Date().toISOString(),
+    client: req.body.client,
+    items: req.body.items.map((item) => ({
+      id: uuidv4(),
+      ...item,
+    })),
+    total: req.body.items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    ),
+  };
+
+  orders.push(newOrder);
+  response.status(200).json(newOrder);
+});
 function writeClients(clients) {
   fs.writeFileSync(DATA_PATH, JSON.stringify(clients, null, 2), "utf-8");
 }
@@ -47,7 +70,7 @@ app.get("/clients", (req, res) => {
 });
 
 app.get("/orders", (req, res) => {
-  res.set("Cache-Control", "no-store"); 
+  res.set("Cache-Control", "no-store");
   res.json(orders);
 });
 
@@ -79,10 +102,6 @@ app.delete("/clients/:id", (req, res) => {
   res.json({ message: "Client deleted" });
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9efa35f713f230dd9604c6cc634ddd0ae0c31b1f
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );
