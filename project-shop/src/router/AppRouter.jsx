@@ -153,6 +153,9 @@ import Profile from "../pages/Profile/Profile.jsx";
 import AuthPage from "../components/AuthPage";
 import PrivateRoute from "../router/PrivacyRoute.jsx";
 import { useAuth } from "../context/AuthProvider";
+import OrdersPage from "../pages/Orders/OrdersPage.jsx";
+import FullOrderCard from "../components/FullOrderCard/FullOrderCard.jsx";
+import NewOrderForm from "../components/NewOrderForm/NewOrderForm.jsx";
 
 export default function AppRouter() {
   const { user, loading } = useAuth();
@@ -189,7 +192,23 @@ export default function AppRouter() {
           path="/orders"
           element={
             <PrivateRoute>
-              <div>Orders Page</div>
+              <OrdersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/orders/:orderId"
+          element={
+            <PrivateRoute>
+              <FullOrderCard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/newOrder"
+          element={
+            <PrivateRoute>
+              <NewOrderForm />
             </PrivateRoute>
           }
         />

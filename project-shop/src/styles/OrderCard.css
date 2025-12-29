@@ -1,7 +1,7 @@
 .order-card{
     border: 1px solid black;
     border-radius: 36px;
-    padding-left: 20px;
+    padding: 20px;
     max-height: 300px;
     width: 500px;
     color: black;
@@ -9,3 +9,47 @@
     margin: 20px auto;
 }
 
+.order-card:hover{
+    box-shadow: 0 0 10px black;
+    cursor: pointer;
+    background-color: #e6dec9;
+}
+
+.order-card-date-box, .order-card-client-box{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.order-card-client-box{
+    margin-top: 16px;
+}
+
+
+.order-card-date-box p, .order-card-client-box p{
+    margin: 0;
+}
+
+
+.order-card-date-box-p, .order-card-client-box-p{
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+}
+
+.btn-delete{
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-card-total-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}

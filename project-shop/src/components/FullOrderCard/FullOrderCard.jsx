@@ -1,14 +1,17 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getOrdersAsync } from "../../features/OrdersReducer";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteOrder, getOrdersAsync } from "../../features/OrdersReducer";
+import "../../styles/FullOrderCard.css";
 
 
 export default function FullOrderCard() {
     const {orderId} = useParams();
     const {data: orders, loaded} = useSelector((state) => state.orders);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
+
 
    
 
@@ -19,16 +22,32 @@ export default function FullOrderCard() {
         return <div>Order not found</div>;
     };
 
+    const backToOrders = () => {
+      navigate('/orders');
+    }
+  
+    // const handleDeleteOrder = () => {
+    //   dispatch(deleteOrder(order.id));
+    //   navigate('/orders');
+    // }
 
     
     return(
         <>
+        <button type="button" onClick={backToOrders}>⬅ Back</button>
       
-        <div key={order.id}>
+        <div className="full-order-card" key={order.id}>
           <h2>Order #{order.id}</h2>
-          <p>Date: {order.date}</p>
+          <p>Date: </p>
+          <p>{new Date(order.date).toLocaleString("uk-UA", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+          })}</p>
 
-          <div>
+          <div className="full-order-card-client-box">
             <h3>Client:</h3>
             <h4>{order.client?.name}</h4>
             <p>{order.client?.phone}</p>
@@ -48,6 +67,7 @@ export default function FullOrderCard() {
           </div>
 
           <h3>Total: {order.total} ₴</h3>
+          
         </div>
  
     </>

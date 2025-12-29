@@ -1,13 +1,21 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useClients } from "../../context/ClientsContext";
 import "../../styles/ClientCardPage.css";
+import { useDispatch } from "react-redux";
+import { setClient } from "../../features/CurrentClientReducer";
 
 export default function ClientCardPage() {
   const { id } = useParams();
   const { clients } = useClients();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const client = clients.find((c) => String(c.id) === id);
+
+  const handleClickAddNewOrder = () => {
+    dispatch(setClient(client));
+    navigate("/newOrder");
+  }
 
   return (
     <div className="container">
@@ -38,7 +46,7 @@ export default function ClientCardPage() {
           <button
             type="button"
             className="add-btn"
-            onClick={() => navigate("/orders")}>
+            onClick={handleClickAddNewOrder}>
             Add new order
           </button>
         </div>
