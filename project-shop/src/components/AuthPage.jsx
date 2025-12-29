@@ -1,21 +1,56 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useAuth } from "../context/AuthProvider";
+import { auth, googleProvider } from "../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  signInWithPopup,
+} from "firebase/auth";
 import Button from "./Button";
 import logo from "../img/logo.png";
 import "../styles/AuthPage.css";
 
 export default function AuthPage() {
-  const { loginWithEmail, signUpWithEmail, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const handleGoogle = async () => {
     try {
-      await loginWithGoogle();
+      await signInWithPopup(auth, googleProvider);
       navigate("/profile");
     } catch (err) {
       console.log(err);
+      alert(err.message);
+    }
+  };
+
+  const handleEmailSignUp = async (email, password, firstName, lastName) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(userCredential.user, {
+        displayName: `${firstName} ${lastName}`,
+      });
+      navigate("/profile");
+    } catch (err) {
+      console.log(err);
+      if (err.code === "auth/email-already-in-use") {
+        alert("Email вже використовується. Спробуй увійти через логін.");
+      } else {
+        alert(err.message);
+      }
+    }
+  };
+
+  const handleEmailLogin = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/profile");
+    } catch (err) {
       alert(err.message);
     }
   };
@@ -42,44 +77,26 @@ export default function AuthPage() {
               errors.firstName = "Required for sign up";
               errors.lastName = "Required for sign up";
             }
-
-            if (!values.email) {
-              errors.email = "Required";
-            } else if (
+            if (!values.email) errors.email = "Required";
+            else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
+            )
               errors.email = "Invalid email address";
-            }
-
-            if (!values.password) {
-              errors.password = "Required";
-            } else if (values.password.length < 6) {
+            if (!values.password) errors.password = "Required";
+            else if (values.password.length < 6)
               errors.password = "Password must be at least 6 characters";
-            }
-
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
-            try {
-              if (values.firstName || values.lastName) {
-                const cred = await signUpWithEmail(
-                  values.email,
-                  values.password
-                );
-                await cred.user.updateProfile({
-                  displayName: `${values.firstName} ${values.lastName}`,
-                });
-              } else {
-                await loginWithEmail(values.email, values.password);
-              }
-              navigate("/profile");
-            } catch (err) {
-              console.log(err);
-              if (err.code === "auth/email-already-in-use") {
-                alert("Email already used, try login");
-              } else {
-                alert(err.message);
-              }
+            if (values.firstName || values.lastName) {
+              await handleEmailSignUp(
+                values.email,
+                values.password,
+                values.firstName,
+                values.lastName
+              );
+            } else {
+              await handleEmailLogin(values.email, values.password);
             }
             setSubmitting(false);
           }}>

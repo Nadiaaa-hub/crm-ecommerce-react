@@ -1,26 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+import { auth } from "../../firebase";
+import { signOut } from "firebase/auth";
 import "../../styles/ClientCardPage.css";
 
 export default function Profile() {
-  const { user, logout, loading } = useAuth();
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!loading && !user) {
-      navigate("/login");
-    }
-  }, [user, loading, navigate]);
-
-  if (loading || !user) {
-    return <div style={{ padding: 20 }}>Loading...</div>;
-  }
+    const unsubscribe = auth.onAuthStateChanged((usr) => {
+      setUser(usr);
+      setLoading(false);
+      if (!usr) navigate("/auth");
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   const handleLogout = async () => {
-    await logout();
-    navigate("/login");
+    await signOut(auth);
+    navigate("/auth");
   };
+
+  if (loading) return <div style={{ padding: 20 }}>Loading...</div>;
 
   return (
     <div style={{ padding: 24 }}>
