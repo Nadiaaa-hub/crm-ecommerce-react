@@ -47,11 +47,12 @@ export default function OrdersPage() {
             className="search-box-search"
             type="text"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setInput(value);
+              dispatch(setSearch(value));
+            }}
           />
-          <button type="button" onClick={handleSearch}>
-            Search
-          </button>
         </div>
       </div>
 
