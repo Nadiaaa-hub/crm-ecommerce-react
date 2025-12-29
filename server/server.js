@@ -37,10 +37,6 @@ function readClients() {
 }
 ////orders
 
-app.get("/orders", (req, response) => {
-  return response.json(orders);
-});
-
 app.post("/orders", (req, response) => {
   const newOrder = {
     id: uuidv4(),
@@ -95,10 +91,10 @@ app.post("/clients", (req, res) => {
 });
 
 app.delete("/clients/:id", (req, res) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
   let clients = readClients();
-  clients = clients.filter((c) => c.id !== id);
-  writeClients(clients);
+  const newClients = clients.filter((c) => String(c.id) !== id);
+  writeClients(newClients);
   res.json({ message: "Client deleted" });
 });
 

@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) return null;
 
   if (!user) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/auth" replace />; // редірект до логіну
   }
 
   return children;
