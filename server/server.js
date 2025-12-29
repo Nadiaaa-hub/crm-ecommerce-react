@@ -37,10 +37,6 @@ function readClients() {
 }
 ////orders
 
-app.get("/orders", (req, response) => {
-  return response.json(orders);
-});
-
 app.post("/orders", (req, response) => {
   const newOrder = {
     id: uuidv4(),
