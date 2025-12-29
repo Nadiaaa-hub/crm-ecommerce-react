@@ -29,7 +29,10 @@ export default function FullOrderCard() {
 
   return (
     <>
-      <button type="button" onClick={backToOrders}>
+      {/* <button type="button" onClick={backToOrders}>
+        Back
+      </button> */}
+      <button className="back-btn" type="button" onClick={backToOrders}>
         Back
       </button>
 

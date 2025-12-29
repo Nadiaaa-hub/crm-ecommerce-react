@@ -4,7 +4,7 @@ function formatMoney(value) {
   const num = Number(value || 0);
   return new Intl.NumberFormat(undefined, {
     style: "currency",
-    currency: "UAH", 
+    currency: "UAH",
     maximumFractionDigits: 0,
   }).format(Number.isFinite(num) ? num : 0);
 }
@@ -70,12 +70,6 @@ function KpiCard({ variant, title, value, icon }) {
   );
 }
 
-/**
- * Props:
- * - revenue: number
- * - totalOrders: number
- * - totalClients: number
- */
 export default function KpiCards({ revenue, totalOrders, totalClients }) {
   return (
     <div className="kpis">
@@ -100,9 +94,3 @@ export default function KpiCards({ revenue, totalOrders, totalClients }) {
     </div>
   );
 }
-
-
-
-
-
-

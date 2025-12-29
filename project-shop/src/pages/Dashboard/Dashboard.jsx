@@ -36,9 +36,9 @@ function RecentOrders({ orders, loading }) {
               <td className="mono">{String(o.id).slice(0, 8)}</td>
               <td>{formatDate(o.date || o.createdAt)}</td>
               <td style={{ textAlign: "right" }}>
-                {new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(
-                  Number(o.total || 0)
-                )}
+                {new Intl.NumberFormat(undefined, {
+                  maximumFractionDigits: 0,
+                }).format(Number(o.total || 0))}
               </td>
             </tr>
           ))}
@@ -47,7 +47,6 @@ function RecentOrders({ orders, loading }) {
     </div>
   );
 }
-
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -94,10 +93,14 @@ export default function Dashboard() {
   const isClientsLoaded = clientsCount !== null && clientsCount !== undefined;
   const loading = !isOrdersLoaded || !isClientsLoaded;
 
-  // ✅ логи про clientsCount/revenue/totalOrders — ТОЛЬКО тут
   console.log("Dashboard.orders:", orders);
   console.log("Dashboard.clientsCount:", clientsCount);
-  console.log("Dashboard.revenue:", revenue, "Dashboard.totalOrders:", totalOrders);
+  console.log(
+    "Dashboard.revenue:",
+    revenue,
+    "Dashboard.totalOrders:",
+    totalOrders
+  );
 
   return (
     <div className="dash">
