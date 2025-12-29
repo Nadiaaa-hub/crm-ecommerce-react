@@ -1,12 +1,49 @@
-h1{
+h1 {
     color: black;
+    margin-right: 0;
+    margin-left: 0;
 }
-button{
+
+button {
     background-color: black;
     color: rgb(230, 222, 201);
     border: 2px solid black;
 }
-button:hover{
+
+/* button:hover{
 
     border: 2px solid rgb(1, 255, 1);
+} */
+
+.search-box {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.search-box-right {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: 8px;
+}
+
+.search-box-search {
+    width: 300px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    min-height: 20px;
+}
+
+.orders-page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    width: 700px;
+    margin: 20px auto;
+}
+
+.orders-title:hover {
+    cursor: pointer;
 }

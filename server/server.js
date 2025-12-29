@@ -46,10 +46,7 @@ app.post("/orders", (req, response) => {
       id: uuidv4(),
       ...item,
     })),
-    total: req.body.items.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    ),
+    total: req.body.items.reduce((sum, item) => sum + item.price * item.quantity,0)
   };
 
   orders.push(newOrder);
@@ -58,6 +55,19 @@ app.post("/orders", (req, response) => {
 function writeClients(clients) {
   fs.writeFileSync(DATA_PATH, JSON.stringify(clients, null, 2), "utf-8");
 }
+
+app.delete("/orders/:id", (req, res) => {
+  const id = req.params.id;
+  console.log("DELETE:", req.params.id);
+  console.log("ORDERS IDS:", orders.map(o => o.id));
+  const index = orders.findIndex((order) => order.id === id);
+  if (index !== -1) {
+    orders.splice(index, 1);
+    res.json({ message: "Order deleted" });
+  } else {
+    res.status(404).json({ error: "Order not found" });
+  }
+});
 
 app.get("/clients", (req, res) => {
   res.set("Cache-Control", "no-store");

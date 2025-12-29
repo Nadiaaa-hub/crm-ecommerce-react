@@ -13,12 +13,12 @@ import { clearClient } from "../../features/CurrentClientReducer.js";
 export default function NewOrderForm () {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const [field, meta, helpers] = useField("quantity");
     const currentClient = useSelector(state=> state.currentClient.client)
 
 
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
             fullname: currentClient?.name || '',
             phone: currentClient?.phone || '',
@@ -52,7 +52,7 @@ export default function NewOrderForm () {
                 ]
                 
             }
-            // const [field, meta, helpers] = useField("quantity");
+            
             dispatch(createOrderAsync(payload));
             dispatch(clearClient());
             resetForm();
@@ -64,7 +64,9 @@ export default function NewOrderForm () {
 
 
     const handleClickMore = () => {
-        formik.setFieldValue("quantity", Number(formik.values.quantity) + 1); ;
+        if (formik.values.quantity < 10 ){
+            formik.setFieldValue("quantity", Number(formik.values.quantity) + 1);
+        }
     }
 
     const handleClickLess = () => {
@@ -79,8 +81,8 @@ export default function NewOrderForm () {
 
     return(
         <div>
-            <form action="" onSubmit={formik.handleSubmit}>
-                <h1>Create New Order</h1>
+            <form className="form" onSubmit={formik.handleSubmit}>
+                <h1 className="form-title">Create New Order</h1>
                 <div className="client-box">
 
                     <span>Client</span>
@@ -90,7 +92,7 @@ export default function NewOrderForm () {
                         <input 
                         type="text" 
                         name="fullname"
-                        placeholder="Patricia Robertson Reyn" 
+                        placeholder="Іваненко Іван Іванович" 
                         value={formik.values.fullname}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}/>
@@ -116,7 +118,7 @@ export default function NewOrderForm () {
                         <input 
                         type="text" 
                         name="city" 
-                        placeholder="Kyiv" 
+                        placeholder="Київ" 
                         value={formik.values.city}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}/>
@@ -129,7 +131,7 @@ export default function NewOrderForm () {
                         <input 
                         type="text" 
                         name="postOffice" 
-                        placeholder="Nova Poshta №122" 
+                        placeholder="Нова пошта №122" 
                         value={formik.values.postOffice}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}/>
@@ -158,7 +160,7 @@ export default function NewOrderForm () {
                         <input 
                         type="text" 
                         name="titleOrder"
-                        placeholder="Flower Vase blue (40*50cm)" 
+                        placeholder=" Шарф вовняний в смужку (150х20см)" 
                         onChange={formik.handleChange} 
                         value={formik.values.titleOrder}
                         onBlur={formik.handleBlur}/>
@@ -181,6 +183,8 @@ export default function NewOrderForm () {
                         <button type="button" onClick={handleClickLess}>-</button>
 
                         <input
+                        min={1}
+                        max={10}
                         type="number"
                         name="quantity"
                         value={formik.values.quantity}
