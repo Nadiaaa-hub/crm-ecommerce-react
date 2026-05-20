@@ -11,7 +11,7 @@ npm install
 npm start
 
 2. Run the frontend
-Open a second terminal and go to the project-shop folder:
+Open a second terminal and go to the `project-shop` folder:
 
 cd project-shop
 npm install
